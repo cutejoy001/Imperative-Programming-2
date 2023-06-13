@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/khush/Desktop/Imperative-Programming-2",
-      "program": "c:/Users/khush/Desktop/Imperative-Programming-2/build/Debug/outDebug",
+      "cwd": "c:/Users/khush/Documents/@projects/Imperative-Programming-2",
+      "program": "c:/Users/khush/Documents/@projects/Imperative-Programming-2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
