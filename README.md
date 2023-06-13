@@ -13,7 +13,7 @@ To contribute to this project, please follow these steps:
    Make sure you clone the repository from your own GitHub account, not the main one. This allows you to make changes without affecting the main repository.
 
     ```bash
-    git clone https://github.com/{your-username}/Imperative-Programming-2.git
+    git clone https://github.com/khushaalan/Imperative-Programming-2.git
     ```
 
 3. **Make your changes and push updates.**
