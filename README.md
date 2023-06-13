@@ -26,7 +26,7 @@ To contribute to this project, please follow these steps:
 4. **Create a pull request.**
    After you have made your changes, you need to create a pull request to propose merging your changes into the main repository. This allows the maintainers to review your changes before deciding whether to merge them.
 
-Remember to follow these steps to make the whole process as efficient as possible.
+Remember to follow these steps to make the whole process as efficient as possible..
 
 ## Main Repository
 
