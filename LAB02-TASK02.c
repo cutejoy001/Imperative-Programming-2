@@ -35,31 +35,64 @@ struct Student{
 };
 
 void addStudent(struct Student *s){
-    printf("Enter name: ");
+    printf("Enter student details:\n");
+    printf("Name: ");
     scanf("%s", s->name);
-    printf("Enter roll number: ");
+    printf("Matric Number: ");
     scanf("%d", &s->roll_number);
-    printf("Enter age: ");
+    printf("Age: ");
     scanf("%d", &s->age);
-    printf("Enter GPA: ");
+    printf("GPA: ");
     scanf("%f", &s->GPA);
+    printf("Student added successfully !\n")
 }
 
 void displayStudent(struct Student s){
+    printf("Student Record:\n");
     printf("Name: %s\n", s.name);
-    printf("Roll number: %d\n", s.roll_number);
+    printf("Matric Number: %d\n", s.roll_number);
     printf("Age: %d\n", s.age);
     printf("GPA: %f\n", s.GPA);
 }
 
 void searchStudent(struct Student *s, int roll_number){
-    if(s->roll_number == roll_number){
+    printf("Enter the name of the student to search: ");
+    char search_name[20];
+    scanf("%s", search_name);
+
+    
+    if(s->name == search_name){
+        printf("Student found: \n");
         displayStudent(*s);
+    }
+    else{
+        printf("Student not found !\n");
+    }
+}
+
+
+void updateStudent(struct Student *s, int roll_number){
+    int roll_number;
+    printf("Enter the matric number of the student to update: ");
+    if(s->roll_number == roll_number){
+        printf("Enter updated details:\n");
+        printf("Name: ");
+        scanf("%s", s->name);
+        printf("Matric Number: ");
+        scanf("%d", &s->roll_number);
+        printf("Age: ");
+        scanf("%d", &s->age);
+        printf("GPA: ");
+        scanf("%f", &s->GPA);
+        printf("Student  details updated successfully !\n");
     }
 }
 
 void deleteStudent(struct Student *s, int roll_number){
+    int roll_number;
+    printf("Enter the matric number of the student to delete: ");
     if(s->roll_number == roll_number){
+        printf("Student record deleted successfully! \n");
         s->roll_number = -1;
     }
 }
@@ -67,31 +100,44 @@ void deleteStudent(struct Student *s, int roll_number){
 
 int main(){
 
+    printf("Welcome to Student Record Management System\n\n");
+    printf("Menu:\n\n");
+    printf("1. Add Student\n");
+    printf("2. Display Students\n");
+    printf("3. Search for a Student\n");
+    printf("4. Update student details\n");
+    printf("5. Delete a student\n");
+    printf("6. Exit\n\n");
+
+    int choice;
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
     struct Student *s;
-    int n;
-    printf("Enter number of students: ");
-    scanf("%d", &n);
-    s = (struct Student *)malloc(n * sizeof(struct Student));
-    for(int i = 0; i < n; i++){
-        addStudent(&s[i]);
+    s = (struct Student *)malloc(sizeof(struct Student));
+
+    switch(choice){
+        case 1:
+            addStudent(s);
+            break;
+        case 2:
+            displayStudent(*s);
+            break;
+        case 3:
+            searchStudent(s, s->roll_number);
+            break;
+        case 4:
+            updateStudent(s, s->roll_number);
+            break;
+        case 5:
+            deleteStudent(s, s->roll_number);
+            break;
+        case 6:
+            exit(0);
+            break;
+        default:
+            printf("Invalid choice !\n");
     }
-    for(int i = 0; i < n; i++){
-        displayStudent(s[i]);
-    }
-    int roll_number;
-    printf("Enter roll number to search: ");
-    scanf("%d", &roll_number);
-    for(int i = 0; i < n; i++){
-        searchStudent(&s[i], roll_number);
-    }
-    printf("Enter roll number to delete: ");
-    scanf("%d", &roll_number);
-    for(int i = 0; i < n; i++){
-        deleteStudent(&s[i], roll_number);
-    }
-    for(int i = 0; i < n; i++){
-        displayStudent(s[i]);
-    }
-    
+
     return 0;
 }
