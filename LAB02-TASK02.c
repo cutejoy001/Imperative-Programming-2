@@ -44,7 +44,7 @@ void addStudent(struct Student *s){
     scanf("%d", &s->age);
     printf("GPA: ");
     scanf("%f", &s->GPA);
-    printf("Student added successfully !\n")
+    printf("Student added successfully !\n");
 }
 
 void displayStudent(struct Student s){
