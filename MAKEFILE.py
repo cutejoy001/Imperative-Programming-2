@@ -18,7 +18,7 @@ def compileTask2():
         os.remove("LAB02-TASK02.exe")
 
 
-## https://github.com/khushaalan/Imperative-Programming.git
+## https://github.com/khushaalan/Imperative-Programming-2.git
 def gitUpdate():
     os.system("git status")
     os.system("git add -A")
