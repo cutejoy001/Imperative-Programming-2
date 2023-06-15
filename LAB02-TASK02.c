@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
+bool validate=false;
 
 struct Student{
     char name[20];
@@ -29,17 +30,17 @@ void addStudent(struct Student *s){
     printf("Student added successfully !\n");
 }
 
-void displayStudent(struct Student s){
-    bool validation = false;
-    if(validation==false){
+void displayStudent(struct Student s, bool validation){
+    if(validation==true){
         printf("No student record found !\n");
-        return;
     }
-    printf("Student Record:\n");
-    printf("Name: %s\n", s.name);
-    printf("Matric Number: %d\n", s.roll_number);
-    printf("Age: %d\n", s.age);
-    printf("GPA: %f\n", s.GPA);
+    else{
+        printf("Student Record:\n");
+        printf("Name: %s\n", s.name);
+        printf("Matric Number: %d\n", s.roll_number);
+        printf("Age: %d\n", s.age);
+        printf("GPA: %f\n", s.GPA);
+    }
 }
 
 void searchStudent(struct Student *s, char search_name[50]){
@@ -49,7 +50,7 @@ void searchStudent(struct Student *s, char search_name[50]){
     
     if(s->name == search_name){
         printf("Student found: \n");
-        displayStudent(*s);
+        displayStudent(*s,validate);
     }
     else{
         printf("Student not found !\n");
@@ -122,7 +123,8 @@ int main(){
             addStudent(s);
             break;
         case 2:
-            displayStudent(*s);
+            validate= validation(s);
+            displayStudent(*s,validate);
             break;
         case 3:
             searchStudent(s, s->name);
