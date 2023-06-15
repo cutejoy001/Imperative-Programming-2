@@ -46,7 +46,6 @@ void searchStudent(struct Student *s, char search_name[50]){
 
 
 void updateStudent(struct Student *s, int roll_number){
-    int roll_number;
     printf("Enter the matric number of the student to update: ");
     if(s->roll_number == roll_number){
         printf("Enter updated details:\n");
