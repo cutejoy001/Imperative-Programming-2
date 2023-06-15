@@ -16,7 +16,8 @@ int calculateSum(int arr[], int size){
 }
 
 
-
+/*
+//Without using pointers
 struct Max findMaximum(int arr[], int size){
     struct Max max;
     max.max = arr[0],max.index = 0;
@@ -25,6 +26,23 @@ struct Max findMaximum(int arr[], int size){
             max.max = arr[i];
             max.index = i;
         }
+    }
+    return max;
+}
+*/
+
+//Using pointers
+struct Max findMaximum(int arr[], int size){
+    struct Max max;
+    int *pos = arr;
+    int *end = arr + size - 1;
+    max.max = *pos;
+    while (pos < end){
+        if(*pos > max.max){
+            max.max = *pos;
+            max.index = pos - arr;
+        }
+        pos++;
     }
     return max;
 }
