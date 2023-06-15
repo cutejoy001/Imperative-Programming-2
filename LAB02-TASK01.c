@@ -55,7 +55,7 @@ struct Max findMaximum(int arr[], int size){
     int *pos = arr;
     int *end = arr + size - 1;
     max.max = *pos;
-    while (pos < end){
+    while (pos <= end){
         if(*pos > max.max){
             max.max = *pos;
             max.index = pos - arr;
@@ -83,10 +83,12 @@ int main(){
     srand(time(0));
     
     int arr[10];
+    /*
     for(int i=0;i<10;i++){
         int num = rand() % 100 + 1;
         arr[i] = num;
     }
+    */
 
     printf("Original Array: ");
     for(int i=0;i<10;i++){
