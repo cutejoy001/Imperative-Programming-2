@@ -83,12 +83,6 @@ int main(){
     srand(time(0));
     
     int arr[10];
-    /*
-    for(int i=0;i<10;i++){
-        int num = rand() % 100 + 1;
-        arr[i] = num;
-    }
-    */
 
     printf("Original Array: ");
     for(int i=0;i<10;i++){
