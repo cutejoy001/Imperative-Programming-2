@@ -84,6 +84,11 @@ int main(){
     
     int arr[10];
 
+    for(int i=0;i<10;i++){
+        int num = rand();
+        arr[i] = num;
+    }
+
     printf("Original Array: ");
     for(int i=0;i<10;i++){
         printf("%d ",arr[i]);
