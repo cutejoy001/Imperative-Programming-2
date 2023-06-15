@@ -29,7 +29,7 @@ void addStudent(struct Student *s){
     printf("Student added successfully !\n");
 }
 
-void displayStudent(struct Student s, bool validation){
+void displayStudent(struct Student s){
     bool validation = false;
     if(validation==false){
         printf("No student record found !\n");
@@ -122,7 +122,7 @@ int main(){
             addStudent(s);
             break;
         case 2:
-            displayStudent(*s, validation(s));
+            displayStudent(*s);
             break;
         case 3:
             searchStudent(s, s->name);
