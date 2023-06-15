@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
 
 struct Student{
@@ -9,6 +10,12 @@ struct Student{
     float GPA;
 };
 
+bool validation(struct Student *s){
+    if(s->name[0] == '\0' && s->roll_number == -1 && s->age == -1 && s->GPA == -1){
+        return true;
+    }
+    else return false;
+}
 void addStudent(struct Student *s){
     printf("Enter student details:\n");
     printf("Name: ");
@@ -22,7 +29,12 @@ void addStudent(struct Student *s){
     printf("Student added successfully !\n");
 }
 
-void displayStudent(struct Student s){
+void displayStudent(struct Student s, bool validation){
+    bool validation = false;
+    if(validation==false){
+        printf("No student record found !\n");
+        return;
+    }
     printf("Student Record:\n");
     printf("Name: %s\n", s.name);
     printf("Matric Number: %d\n", s.roll_number);
@@ -47,6 +59,7 @@ void searchStudent(struct Student *s, char search_name[50]){
 
 void updateStudent(struct Student *s, int roll_number){
     printf("Enter the matric number of the student to update: ");
+    scanf("%d", &roll_number);
     if(s->roll_number == roll_number){
         printf("Enter updated details:\n");
         printf("Name: ");
@@ -63,15 +76,32 @@ void updateStudent(struct Student *s, int roll_number){
 
 void deleteStudent(struct Student *s, int roll_number){
     printf("Enter the matric number of the student to delete: ");
+    scanf("%d", &roll_number);
     if(s->roll_number == roll_number){
         printf("Student record deleted successfully! \n");
-        s->roll_number = -1;
+        for(int i = 0; i < 20; i++){
+            s->name[i] = '\0';
+        }
+        s->roll_number = 0;
+        s->age = 0;
+        s->GPA = 0.0;
+
     }
 }
 
 
 int main(){
 
+    struct Student *s;
+    s = (struct Student *)malloc(sizeof(struct Student));
+    s->name[0] = '\0';
+    s->roll_number = -1;
+    s->age = -1;
+    s->GPA = -1;
+
+    bool flag = true;
+
+    while(flag){
     printf("Welcome to Student Record Management System\n\n");
     printf("Menu:\n\n");
     printf("1. Add Student\n");
@@ -85,15 +115,14 @@ int main(){
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
-    struct Student *s;
-    s = (struct Student *)malloc(sizeof(struct Student));
+
 
     switch(choice){
         case 1:
             addStudent(s);
             break;
         case 2:
-            displayStudent(*s);
+            displayStudent(*s, validation(s));
             break;
         case 3:
             searchStudent(s, s->name);
@@ -110,6 +139,8 @@ int main(){
         default:
             printf("Invalid choice !\n");
     }
+    }
 
+    free(s);
     return 0;
 }
