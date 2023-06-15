@@ -65,7 +65,7 @@ struct Max findMaximum(int arr[], int size){
     return max;
 }
 
-void reverseArray(int *arr, int size){
+void reverseArray(int arr[], int size){
     int *pos = arr;
     int *end = arr + size - 1;
     while (pos < end){
@@ -95,7 +95,8 @@ int main(){
     }
 
     printf("\nSum of all elements: %d",calculateSum(arr,10));
-    printf("\nMaximum element: %d, Index: %d",findMaximum(arr,10).max, findMaximum(arr,10).index);
+    struct Max max = findMaximum(arr,10);
+    printf("\nMaximum element: %d, Index: %d",max.max, max.index);
 
     
     reverseArray(arr,10);
